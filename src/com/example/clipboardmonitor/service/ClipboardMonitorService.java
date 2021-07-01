@@ -29,9 +29,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.Date;
 
 /**
  * Monitors the {@link ClipboardManager} for changes and logs the text to a file.
@@ -81,14 +81,14 @@ public class ClipboardMonitorService extends Service {
 
     private ClipboardManager.OnPrimaryClipChangedListener mOnPrimaryClipChangedListener =
             new ClipboardManager.OnPrimaryClipChangedListener() {
-        @Override
-        public void onPrimaryClipChanged() {
-            Log.d(TAG, "onPrimaryClipChanged");
-            ClipData clip = mClipboardManager.getPrimaryClip();
-            mThreadPool.execute(new WriteHistoryRunnable(
-                    clip.getItemAt(0).getText()));
-        }
-    };
+                @Override
+                public void onPrimaryClipChanged() {
+                    Log.d(TAG, "onPrimaryClipChanged");
+                    ClipData clip = mClipboardManager.getPrimaryClip();
+                    mThreadPool.execute(new WriteHistoryRunnable(
+                            clip.getItemAt(0).getText()));
+                }
+            };
 
     private class WriteHistoryRunnable implements Runnable {
         private final Date mNow;

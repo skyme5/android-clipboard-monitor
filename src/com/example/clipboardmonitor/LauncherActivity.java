@@ -19,14 +19,15 @@ package com.example.clipboardmonitor;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.example.clipboardmonitor.service.ClipboardMonitorService;
 
-public class LauncherActivity extends Activity
-{
-    /** Called when the activity is first created. */
+public class LauncherActivity extends Activity {
+    /**
+     * Called when the activity is first created.
+     */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // TODO: Show the contents of the clipboard history.
